@@ -1,5 +1,14 @@
-import React from "react";
+/** @format */
 
+import React from "react";
+import Loading from "../components/Loading";
+import ProductList from "../components/Products/ProductList";
+import { ProductContext } from "../context/products";
 export default function Products() {
-  return <h1>hello from products page</h1>;
+  const { loading, products } = React.useContext(ProductContext);
+
+  if (loading) {
+    return <Loading />;
+  }
+  return <ProductList title="our products" products={products} />;
 }
